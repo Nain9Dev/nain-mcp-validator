@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#EDF1F6">
+  <title>nain-mcp-validator · Deterministic 3D validation for AI agents</title>
+  <meta name="description" content="A Model Context Protocol server that gives AI agents deterministic 3D mesh validation (checks C1 to C10), SHA-256 content verification and fail-closed conformance reports.">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="shell">
+    <a class="brand" href="#top">
+      <svg class="mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 18 11 6M10 18l7-12M16 18l4-7"/></svg>
+      <span>nain-mcp-validator</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#tools">Tools</a>
+      <a href="#checks">Checks</a>
+      <a href="#connect">Connect</a>
+      <a class="keep" href="https://github.com/Nain9Dev/nain-mcp-validator">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+  <div class="shell">
+    <span class="eyebrow">Model Context Protocol · Python 3.11+ · MIT</span>
+    <h1>Let an AI agent check a 3D model, not guess at it.</h1>
+    <p class="lead">An agent that generates CAD geometry can read its own output and call it fine. This server gives it measurements instead: deterministic checks on the mesh, a hash to prove the file is the one that was checked, and a verdict that fails closed.</p>
+    <div class="actions">
+      <a class="btn primary" href="#connect">Connect it to your client</a>
+      <a class="btn" href="https://github.com/Nain9Dev/nain-mcp-validator">View the source</a>
+    </div>
+    <ul class="chips" aria-label="Key facts">
+      <li>MCP 2024-11-05</li>
+      <li>JSON-RPC over stdio</li>
+      <li>Checks C1 to C10</li>
+      <li>No network access</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="tools" aria-labelledby="tools-title">
+  <div class="shell">
+    <h2 id="tools-title">Three tools, each with a strict schema</h2>
+    <p class="intro">A client discovers them with <code>tools/list</code>. Every input and output is described by a JSON Schema, so an agent cannot call them loosely.</p>
+    <div class="grid">
+      <article class="card">
+        <span class="tag">validate_mesh_invariants</span>
+        <h3>Measure the mesh</h3>
+        <p>Runs checks C1 to C10 on the geometry: closed, manifold, consistently oriented, no degenerate faces. Returns the result of each check, not a summary opinion.</p>
+      </article>
+      <article class="card">
+        <span class="tag">verify_content_digest</span>
+        <h3>Prove it is the same file</h3>
+        <p>Computes the SHA-256 of the data and compares it with the expected hash. A mismatch fails closed, so a report always refers to exact bytes.</p>
+      </article>
+      <article class="card">
+        <span class="tag">generate_conformance_report</span>
+        <h3>Get a verdict you can file</h3>
+        <p>Formats the check results as a standard Markdown audit with an explicit pass or fail gate, ready to attach to a review.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="checks" aria-labelledby="checks-title">
+  <div class="shell">
+    <h2 id="checks-title">What the checks assert</h2>
+    <p class="intro">An asset is rejected if any gate from C1 to C10 fails. These are the ones the requirements document names.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Check</th><th scope="col">Asserts</th></tr></thead>
+        <tbody>
+          <tr><td><code>C1</code></td><td>Buffer integrity: no NaN or infinite coordinates, no orphan vertices.</td></tr>
+          <tr><td><code>C2</code></td><td>Degenerate faces, counted against a quantum threshold of 10<sup>-12</sup> m².</td></tr>
+          <tr><td><code>C3</code></td><td>2-manifold topology: every edge is shared by at most two faces.</td></tr>
+          <tr><td><code>C4</code></td><td>Watertight closure: zero boundary edges for a closed solid.</td></tr>
+          <tr><td><code>C5</code></td><td>Outward normals and consistent winding.</td></tr>
+          <tr><td><code>C10</code></td><td>The Euler-Poincaré invariant: χ = 2 · (bodies − genus).</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Why deterministic: the same mesh gives the same verdict every time, on any machine. There is no model in the loop to be persuaded.</p>
+  </div>
+</section>
+
+<section class="section" id="connect" aria-labelledby="connect-title">
+  <div class="shell">
+    <h2 id="connect-title">Connect it in two minutes</h2>
+    <p class="intro">Add the server to the configuration of Claude Desktop, Cursor or any MCP client that launches servers over stdio.</p>
+    <div class="cols">
+      <ol class="steps">
+        <li><strong>Get the code</strong>Clone the repository. It needs Python 3.11 or newer.</li>
+        <li><strong>Add the server</strong>Paste the snippet into your client's MCP configuration.</li>
+        <li><strong>Ask for a check</strong>The agent can now validate a mesh and cite the digest and the verdict.</li>
+      </ol>
+      <div>
+<pre><code>{
+  "mcpServers": {
+    "nain-validator": {
+      "command": "python",
+      "args": ["-m", "nain_mcp_validator.server"],
+      "cwd": "/path/to/nain-mcp-validator"
+    }
+  }
+}</code></pre>
+<pre><code># verify the server itself
+pytest -v</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="shell">
+    <span>By Aitor Nain Mendoza Vallejo · MIT licence · The server makes no network calls.</span>
+    <span><a href="https://github.com/Nain9Dev/engineering-handbook">NainDev Engineering Handbook</a> · <a href="https://www.naindev.com">naindev.com</a></span>
+  </div>
+</footer>
+</body>
+</html>
