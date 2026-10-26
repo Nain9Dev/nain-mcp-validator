@@ -417,8 +417,16 @@ td code {
   stroke-width: 2;
 }
 
-.diagram .core {
+.diagram .core rect {
   fill: var(--blue);
+}
+
+.diagram .sub-core {
+  fill: #c9dcfa;
+}
+
+.diagram .dash {
+  stroke-dasharray: 6 5;
 }
 
 .diagram .core text {
@@ -450,6 +458,34 @@ td code {
 .cols > *,
 .grid > * {
   min-width: 0;
+}
+
+.grid + .note,
+.table-wrap + .note {
+  margin-top: 16px;
+}
+
+.diagram + .grid {
+  margin-top: 16px;
+}
+
+.wf {
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+}
+
+.wf pre {
+  margin: 0;
+}
+
+.sub-title {
+  margin: 28px 0 12px;
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.sub-title:first-of-type {
+  margin-top: 0;
 }
 
 .footer {
