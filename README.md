@@ -2,6 +2,8 @@
 
 > Standalone Model Context Protocol (MCP) server providing deterministic 3D asset validation (checks C1-C10), content-addressed artifact verification (SHA-256), and fail-closed conformance reporting for AI engineering agents.
 
+[![Language: English](https://img.shields.io/badge/Language-English-blue.svg)](#)
+[![Versión en Español](https://img.shields.io/badge/Versión-Español-red.svg)](README.es.md)
 [![Protocol](https://img.shields.io/badge/MCP-2024--11--05-0047AB)](https://modelcontextprotocol.io/)
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB)](https://www.python.org/)
 [![Validation](https://img.shields.io/badge/Checks-C1_to_C10-22c55e)](docs/01-requirements.md)
