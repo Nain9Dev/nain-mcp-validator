@@ -1,3 +1,9 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/banner-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/assets/banner-light.svg">
+  <img alt="nain-mcp-validator Architectural Blueprint" src="docs/assets/banner-dark.svg" width="100%">
+</picture>
+
 # nain-mcp-validator
 
 > Standalone Model Context Protocol (MCP) server providing deterministic 3D asset validation (checks C1-C10), content-addressed artifact verification (SHA-256), and fail-closed conformance reporting for AI engineering agents.

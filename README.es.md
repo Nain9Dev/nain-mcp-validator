@@ -1,3 +1,9 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/banner-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/assets/banner-light.svg">
+  <img alt="Plano arquitectónico de nain-mcp-validator" src="docs/assets/banner-dark.svg" width="100%">
+</picture>
+
 # nain-mcp-validator
 
 > Servidor independiente de Model Context Protocol (MCP) que proporciona validación determinista de activos 3D (verificaciones C1-C10), comprobación de integridad direccionada por contenido (SHA-256) e informes de conformidad fail-closed para agentes de ingeniería con IA.
