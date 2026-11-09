@@ -20,6 +20,10 @@
 ### REQ-MCP-04: Conformance Report Generation
 - **Statement**: When an agent invokes `generate_conformance_report`, the server shall format the check results into a standardized Markdown audit summary with an explicit pass/fail gate.
 
+### REQ-SEO-01: Project Page Discoverability
+- **Statement**: When a crawler or AI engine fetches the public project page, the site shall expose a single canonical URL, a 70-160 character description, Open Graph and Twitter metadata, `SoftwareApplication` JSON-LD, `robots.txt`, `sitemap.xml` and `llms.txt` at the site root.
+- **Verification**: `tests/test_site_seo.py`.
+
 ## 2. Non-Functional Requirements
 
 - **NFR-01: Protocol Compliance**: JSON-RPC 2.0 over stdio with UTF-8 encoding.

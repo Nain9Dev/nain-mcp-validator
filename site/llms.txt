@@ -1,0 +1,9 @@
+# nain-mcp-validator
+
+> A Model Context Protocol server that gives AI agents deterministic 3D mesh validation (checks C1 to C10), SHA-256 content verification and fail-closed conformance reports.
+
+## Links
+
+- [Project page](https://mcp.naindev.com/): overview, tools and client setup
+- [Source repository](https://github.com/Nain9Dev/nain-mcp-validator): code, documentation and license (MIT)
+- [NainDev](https://www.naindev.com/): main site of the author, Aitor Nain
