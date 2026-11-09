@@ -50,7 +50,7 @@ def test_author_link_and_single_h1() -> None:
 
 def test_json_ld_software_application() -> None:
     blocks = re.findall(
-        r'<script type="application/ld\+json">(.*?)</script>', _html(), flags=re.S
+        r'<script type="application/ld\+json">(.*?)</script>', _html(), flags=re.DOTALL
     )
     assert len(blocks) == 1
     assert "<" not in blocks[0]
