@@ -24,6 +24,10 @@
 - **Statement**: When a crawler or AI engine fetches the public project page, the site shall expose a single canonical URL, a 70-160 character description, Open Graph and Twitter metadata, `SoftwareApplication` JSON-LD, `robots.txt`, `sitemap.xml` and `llms.txt` at the site root.
 - **Verification**: `tests/test_site_seo.py`.
 
+### REQ-PWA-01: Installable Project Page
+- **Statement**: When a visitor opens the public project page in Android Chrome or iOS Safari, the site shall publish `manifest.webmanifest` and PNG install icons at the site root and link them from the page with the iOS head tags, so the page installs as a standalone app named `Nain MCP`. The site shall register no service worker.
+- **Verification**: `tests/test_site_install.py`; spec in `specs/next-pwa-install/spec.md`.
+
 ## 2. Non-Functional Requirements
 
 - **NFR-01: Protocol Compliance**: JSON-RPC 2.0 over stdio with UTF-8 encoding.

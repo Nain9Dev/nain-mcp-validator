@@ -1,0 +1,18 @@
+{
+  "id": "./",
+  "name": "Nain MCP Validator",
+  "short_name": "Nain MCP",
+  "description": "Model Context Protocol server giving AI agents deterministic 3D mesh validation (checks C1 to C10), SHA-256 digests and fail-closed reports.",
+  "lang": "en",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#EDF1F6",
+  "theme_color": "#EDF1F6",
+  "icons": [
+    { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
