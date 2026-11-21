@@ -4,12 +4,26 @@ version = "0.1.0"
 description = "Deterministic 3D asset validation and content integrity server for the Model Context Protocol (MCP)."
 readme = "README.md"
 requires-python = ">=3.11"
+license = { text = "MIT" }
+keywords = ["mcp", "model-context-protocol", "3d", "mesh-validation", "gltf", "deterministic"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering",
+]
 authors = [
     { name = "Aitor Nain Mendoza Vallejo", email = "contact@naindev.com" }
 ]
 dependencies = [
     "pydantic>=2.0.0",
 ]
+
+[project.urls]
+Homepage = "https://mcp.naindev.com/"
+Repository = "https://github.com/Nain9Dev/nain-mcp-validator"
+
+[project.scripts]
+nain-mcp-validator = "nain_mcp_validator.server:run_server"
 
 [project.optional-dependencies]
 dev = [

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Nain9Dev/nain-mcp-validator",
+  "description": "Deterministic 3D mesh validation (C1-C10) and SHA-256 checks for AI agents.",
+  "title": "nain-mcp-validator",
+  "websiteUrl": "https://mcp.naindev.com/",
+  "repository": {
+    "url": "https://github.com/Nain9Dev/nain-mcp-validator",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "registryBaseUrl": "https://pypi.org",
+      "identifier": "nain-mcp-validator",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}
