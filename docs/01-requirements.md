@@ -40,6 +40,10 @@
 - **Statement**: The README shall contain the line `mcp-name: io.github.Nain9Dev/nain-mcp-validator`, which the official registry reads to verify a PyPI package.
 - **Verification**: `tests/test_packaging.py`.
 
+### REQ-PKG-04: Tokenless Release
+- **Statement**: When a `v*` tag is pushed, the release workflow shall check that the tag, `pyproject.toml` and `server.json` carry the same version, run the tests, publish to PyPI through trusted publishing and to the MCP Registry through GitHub OIDC, with every action pinned by commit SHA and no secret stored in the repository.
+- **Verification**: `tests/test_packaging.py`, `scripts/check_release_version.py`, `actionlint` and `zizmor` on `.github/workflows/publish.yml`.
+
 ## 2. Non-Functional Requirements
 
 - **NFR-01: Protocol Compliance**: JSON-RPC 2.0 over stdio with UTF-8 encoding.
