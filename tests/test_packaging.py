@@ -5,12 +5,13 @@ from __future__ import annotations
 import json
 import tomllib
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 NAME = "io.github.Nain9Dev/nain-mcp-validator"
 
 
-def _pyproject() -> dict:
+def _pyproject() -> dict[str, Any]:
     return tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
 
 
