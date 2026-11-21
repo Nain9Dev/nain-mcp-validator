@@ -15,7 +15,36 @@
 [![Validation](https://img.shields.io/badge/Checks-C1_to_C10-22c55e)](docs/01-requirements.md)
 [![License](https://img.shields.io/badge/License-MIT-gray)](LICENSE)
 
+mcp-name: io.github.Nain9Dev/nain-mcp-validator
+
 ---
+
+## Install and run
+
+The server speaks JSON-RPC over stdio and has no network access. Once the package is on PyPI:
+
+```bash
+uvx nain-mcp-validator
+```
+
+Until then, run it straight from the repository:
+
+```bash
+uvx --from git+https://github.com/Nain9Dev/nain-mcp-validator nain-mcp-validator
+```
+
+MCP client configuration:
+
+```json
+{
+  "mcpServers": {
+    "nain-mcp-validator": {
+      "command": "uvx",
+      "args": ["nain-mcp-validator"]
+    }
+  }
+}
+```
 
 ## 1. Overview
 

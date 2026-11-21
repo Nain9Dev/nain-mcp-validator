@@ -28,6 +28,18 @@
 - **Statement**: When a visitor opens the public project page in Android Chrome or iOS Safari, the site shall publish `manifest.webmanifest` and PNG install icons at the site root and link them from the page with the iOS head tags, so the page installs as a standalone app named `Nain MCP`. The site shall register no service worker.
 - **Verification**: `tests/test_site_install.py`; spec in `specs/next-pwa-install/spec.md`.
 
+### REQ-PKG-01: Console Script
+- **Statement**: When the package is installed, it shall provide the console script `nain-mcp-validator` that starts the stdio JSON-RPC server.
+- **Verification**: `tests/test_packaging.py`; run through `uvx --from . nain-mcp-validator`.
+
+### REQ-PKG-02: MCP Registry Descriptor
+- **Statement**: The repository shall carry a `server.json` whose name is `io.github.Nain9Dev/nain-mcp-validator` and whose version, repository, PyPI package and stdio transport match `pyproject.toml`.
+- **Verification**: `tests/test_packaging.py`.
+
+### REQ-PKG-03: PyPI Ownership Marker
+- **Statement**: The README shall contain the line `mcp-name: io.github.Nain9Dev/nain-mcp-validator`, which the official registry reads to verify a PyPI package.
+- **Verification**: `tests/test_packaging.py`.
+
 ## 2. Non-Functional Requirements
 
 - **NFR-01: Protocol Compliance**: JSON-RPC 2.0 over stdio with UTF-8 encoding.
